@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+	{% set logged = "" %}
+
+
+	<div class="container" style="min-height:100vh">
+		<h1>
+			{{ usuario.username }}'s
+																																										saved tweets
+		</h1>
+		<div class=" row mm text-center">
+			<div class="col-12 offset-2">
+				{% if tweets != null %}
+					{% for tweet in tweets %}
+						{% if app.user != null %}
+							{% if usuario.username == app.user.username %}
+								{% set logged %}
+								<a class="guardarTweet" rel="nofollow noopener" onclick="borrarTweet('{{tweet.idTweet}}')">
+									<i class="far fa-save">
+										Delete</i>
+								</a>
+								{% endset %}
+							{% endif %}
+						{% endif %}
+
+						<div class="tarjeta2 col-12" id="{{ tweet.idTweet }}">
+							<div>
+								<h2>#{{ tweet.hashtag }}</h2>
+								<div class="multimedia">
+									{% if tweet.video != null %}
+										<video controls="true" class="embed-responsive-item videoTweet">
+											<source src="{{ tweet.video }}" type="video/mp4"/>
+										</video>
+
+									{% elseif tweet.imagen != null %}
+										<img src='{{ tweet.imagen }}' class='imagenTweet img-fluid'/>
+									{% endif %}
+
+								</div>
+								<div class="contenido">
+									<h3>@{{ tweet.usuario }}</h3>
+								</div>
+
+								<div class="contenido">
+									<p>{{ tweet.texto }}</p>
+								</div>
+								<a class="botonLink" href="{{tweet.url}}" target="_blank" rel="nofollow noopener">Go to the tweet</a>
+								{{ logged }}
+							</div>
+						</div>
+
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	<script>
+
+
+		function borrarTweet(idTweet) {
+$.post('/alejandro-roman-final/public/borrarTweet', {
+'data': idTweet
+}, function (r) {
+if (r === "Tweet Borrado") {
+alertify.success("Tweet Deleted");
+document.getElementById(idTweet).style.display = 'none';
+}
+})
+}
+	</script>
+{% endblock %}

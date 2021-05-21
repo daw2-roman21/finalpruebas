@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{ personaje.nombre }}
+{% endblock %}
+{% block content %}
+	<!-- Modal -->
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-body text-center">
+					<div class="loader"></div>
+
+					<div clas="loader-txt">
+						Loading tweets
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="parallax paralImg"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-12">
+				<div class="imgu">
+					<img src="{{ asset('images/guilty/GGStrive_Logo.png') }}" alt=""/>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row mm separador">
+				<div class="col-12 text-center">
+					<ul class="menuPersonajes">
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/sol"><img src="../images/guilty/solPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/ky"><img src="../images/guilty/kyPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/may"><img src="../images/guilty/mayPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/axl"><img src="../images/guilty/axlPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/chipp"><img src="../images/guilty/chippPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/potemkin"><img src="../images/guilty/potemkinPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/faust"><img src="../images/guilty/faustPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/millia"><img src="../images/guilty/milliaPortrait.jpg" class="paralelograma"/></a>
+						</li>
+
+					</ul>
+					<ul class="menuPersonajes">
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/zato"><img src="../images/guilty/zatoPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/ramlethal"><img src="../images/guilty/ramlethalPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/leo"><img src="../images/guilty/leoPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/nagoriyuki"><img src="../images/guilty/nagoriyukiPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/giovanna"><img src="../images/guilty/giovannaPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/anji"><img src="../images/guilty/anjiPortrait.jpg" class="paralelograma"/></a>
+						</li>
+						<li data-tilt data-tilt-scale="1.15">
+							<a href="../guilty/ino"><img src="../images/guilty/inoPortrait.jpg" class="paralelograma"/></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row mm">
+
+				<div class="col-lg-3 col-md-12" style="margin: 30px;">
+
+					<img src="../images/guilty/{{personaje.nombre}}Portrait.jpg" class="img-fluid "/>
+
+					<h2>{{personaje.nombreCompleto}}</h2>
+					<h3>{{personaje.descripcionHeader}}</h3>
+					<p>{{personaje.descripcionBody}}</p>
+				</div>
+				<div class="col-lg-8 col-md-12" id="tweets"></div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" value="{{personaje.hashtag}}" name="hashtag" id="hashtag"/>
+	<input type="hidden" value="{{personaje.juego}}" name="juego" id="juego"/>
+	{% if app.user != null %}
+		<input type="hidden" value="{{app.user.username}}" name="user" id="user"/>
+	{% endif %}
+
+	<script src="{{asset('js/tweets.js')}}"></script>
+{% endblock %}

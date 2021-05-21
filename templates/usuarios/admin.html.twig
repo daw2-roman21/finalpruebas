@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block content %}
+	<div class="container">
+		<div class="row mm">
+			<table class="table col-12" style="background-color:#1b1e42;width=100%;" id="tabla">
+				<thead>
+					<tr>
+						<th>Username</th>
+						<th>Roles</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="bodyTabla"></tbody>
+			</table>
+		</div>
+	</div>
+	<script src="{{asset('js/useradmin.js')}}"></script>
+{% endblock %}

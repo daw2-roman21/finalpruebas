@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}TechZone
+			{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle`
+																																																																																																																																																																										           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous"/>
+			<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+			<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+			<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"/>
+			<link rel="stylesheet" href="{{asset('css/style.css')}}"/>
+			<link
+			rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+		{#{{ encore_entry_link_tags('app') }}#}
+		{% endblock %}
+
+		{% block javascripts %}
+			{#{{ encore_entry_script_tags('app') }}#}
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top " style="background-color: #1b1e42 !important">
+				<a class="navbar-brand" style="color:#f6b93b" href="/alejandro-roman-final/public/">
+					<h1>TechZone</h1>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+					<ul class="navbar-nav mr-auto">
+						{% if app.user != null %}
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+									<i class="fas fa-user">
+										{{app.user.username}}
+										{% if is_granted('ROLE_ADMIN') %}
+											{{app.user.roles[0]}}
+										{% endif %}
+									</i>
+								</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="/alejandro-roman-final/public/users/{{app.user.username}}">My profile</a>
+									<a class="dropdown-item" href="/alejandro-roman-final/public/logout">Logout</a>
+									{% if is_granted('ROLE_ADMIN') %}
+										<a class="dropdown-item" href="/alejandro-roman-final/public/useradmin">User Admin</a>
+
+									{% endif %}
+								</div>
+							</li>
+						</li>
+					{% endif %}
+					{% if app.user == null %}
+						<li class="nav-item">
+							<a class="nav-link" href="/alejandro-roman-final/public/login">Login
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/alejandro-roman-final/public/registro">Register
+							</a>
+						</li>
+					{% endif %}
+
+					<li class="nav-item">
+						<a class="nav-link" href="#">Home
+						</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+							Games
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="/alejandro-roman-final/public/guilty">Guilty Gear Strive</a>
+							<a class="dropdown-item" href="/alejandro-roman-final/public/uni">Unicl-r</a>
+						</div>
+					</li>
+
+
+				</ul>
+				<form id="formuBuscar" class="form-inline my-2 my-lg-0" autocomplete="off">
+					<input class="form-control mr-sm-2" id="buscador" list="usuarios" type="search" placeholder="Search Users" aria-label="Search">
+					<datalist id="usuarios"></datalist>
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="buscar">Search</button>
+				</form>
+			</div>
+		</body>
+	</html>
+</nav>
+{% block content %}{% endblock %}{% endblock %}<script src="{{asset('vanilla-tilt.min.js')}}"></script><script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script><script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script><script src="{{asset('js/script.js')}}"></script></body></html>

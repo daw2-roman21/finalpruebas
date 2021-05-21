@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TechZone
+{% endblock %}
+
+{% block content %}
+	<div class="parallax paralImgMain"></div>
+	<div class="container" style="height:200px">
+		<span class="text-center" style="top:-100px">View Games</span>
+		<h1>TechZone</h1>
+		<h2>THE TECH YOU NEED</h2>
+	</div>
+	<div class="parallax paralImg"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-12">
+				<div class="imgu">
+					<img src="{{ asset('images/guilty/GGStrive_Logo.png') }}" alt=""/>
+				</div>
+			</div>
+
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-3 offset-9">
+				<a class="box__button text-center" href="/alejandro-roman-final/public/guilty">Tech</a>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="height:200px"></div>
+	<div class="parallax paralImg2"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-12">
+				<div class="imgu">
+					<img src="{{ asset('images/uni/Uniclr-logo.png') }}" alt=""/>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-3 offset-9">
+				<a class="box__button text-center" href="/alejandro-roman-final/public/uni">Tech</a>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="height:200px"></div>
+	<footer
+		class="text-center text-lg-start" style="background-color: #1b1e42 !important">
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2021 Copyright:
+			<a class="text-dark" href="#">Alejandro Román Cabello</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+
+{% endblock %}
