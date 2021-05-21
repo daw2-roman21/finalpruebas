@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
         keyboard: false, //remove option to close with keyboard
         show: true //Display loader!
     });
-    $.get("/alejandro-roman-final/public/tweet", {
+    $.get("/public/tweet", {
         "data": {
             "hashtag": document.getElementById("hashtag").value,
             "juego": document.getElementById("juego").value
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function guardarTweet(idTweet) {
 
 
-    $.post("/alejandro-roman-final/public/guardarTweet", {
+    $.post("/public/guardarTweet", {
         "data": idTweet
     }, function (r) {
         if (r === "Tweet Insertado") {
